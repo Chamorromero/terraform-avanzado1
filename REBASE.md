@@ -1,0 +1,1 @@
+Hemos fusionado 3 commits de prueba con mensajes poco claros en un solo commit descriptivo. Para ello hemos utilizado git rebase -i HEAD~3, manteniendo el primer commit con pick y marcando los dos siguientes con squash (s). Finalmente, aplicamos los cambios remotos con git push --force.
