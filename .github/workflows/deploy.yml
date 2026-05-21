@@ -3,11 +3,20 @@ on: [push]
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    
+    # Aquí es donde metemos tu versión exacta levantando el Docker de LocalStack
+    services:
+      localstack:
+        image: localstack/localstack:3
+        ports:
+          - "4566:4566"
+        env:
+          SERVICES: s3
+          AWS_ACCESS_KEY_ID: test
+          AWS_SECRET_ACCESS_KEY: test
+
     steps:
       - uses: actions/checkout@v4
       - uses: hashicorp/setup-terraform@v3
-      - uses: LocalStack/setup-localstack@v0.2.3
-        with:
-          image-tag: '3'
       - run: terraform init
       - run: terraform apply -auto-approve
