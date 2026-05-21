@@ -6,6 +6,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: hashicorp/setup-terraform@v3
-      - uses: localstack/localstack-github-actions@v0.2.3
+      - uses: LocalStack/setup-localstack@v0.2.3
+        with:
+          image-tag: '3'
       - run: terraform init
       - run: terraform apply -auto-approve
