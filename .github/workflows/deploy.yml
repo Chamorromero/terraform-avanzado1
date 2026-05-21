@@ -1,0 +1,11 @@
+name: T6 - Desplegar
+on: [push]
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v3
+      - uses: localstack/localstack-github-actions@v0.2.3
+      - run: terraform init
+      - run: terraform apply -auto-approve
